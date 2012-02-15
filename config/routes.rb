@@ -1,4 +1,10 @@
+REGEX = /(-)?\d+(\.\d{1,2})/
 Dimsum::Application.routes.draw do
+  resources :items
+
+  resources :lists
+  match "lists/search/:lat/:long" => "lists#search", :via => :get, :constraints => {:lat => REGEX, :long => REGEX}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
