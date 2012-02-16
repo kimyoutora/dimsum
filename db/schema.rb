@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(:version => 20120213014243) do
   end
 
   create_table "lists", :force => true do |t|
+    t.string   "original_text"
     t.string   "subject"
     t.string   "location"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "category"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end
