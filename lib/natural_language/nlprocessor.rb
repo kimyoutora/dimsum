@@ -38,15 +38,18 @@ module NLProcessor
       unless @processed_task.occurrences.empty?
         occurrence = @processed_task.occurrences.first
         if occurrence.type == :single
-          @start = Time.parse("#{occurrence.start_date} #{occurrence.start_time}")
+          start_date = occurrence.start_date.date rescue nil
+          start_time = occurrence.start_time.time rescue nil
+          @start = Time.parse("#{start_date} #{start_time}")
         end
       end
     end
 
     def set_location!
-      sentence_parts = @name.split(/\sfrom|\sat/)
+      sentence_parts = @name.split(/\sfrom\s|\sat\s/i)
+      puts sentence_parts.inspect
       if sentence_parts.size > 1
-        location = sentence_parts.last.gsub(/^\s*the|a\s+/, "")
+        location = sentence_parts.last.gsub(/^\s*the\s+|^\sa\s+/i, "")
         if Categories.has_type?(location)
           @category = Categories.find_type(location)
         else

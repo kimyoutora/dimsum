@@ -6,7 +6,7 @@ require 'openssl'
 module Ext
   class Foursquare
     URL = "https://api.foursquare.com/v2/venues/search?"
-    URL_APPEND_QUERY = "&intent=match&oauth_token=#{FOURSQUARE_OAUTH_TOKEN}&v=#{Time.now.strftime('%Y%m%d')}"
+    # URL_APPEND_QUERY = "&intent=match&oauth_token=#{FOURSQUARE_OAUTH_TOKEN}&v=#{Time.now.strftime('%Y%m%d')}"
     def self.at_venue?(lat_long, venue_name)
       uri = URI(URL)
       uri.query = "ll=#{lat_long}&" << URI.encode_www_form([["query", venue_name]]) << URL_APPEND_QUERY

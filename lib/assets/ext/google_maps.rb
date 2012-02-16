@@ -7,7 +7,7 @@ require 'ostruct'
 module Ext
   class GoogleMaps
     URL = "https://maps.googleapis.com/maps/api/place/search/json?"
-    URL_APPEND_QUERY = "&sensor=false&key=#{GOOGLE_MAPS_API_KEY}"
+    # URL_APPEND_QUERY = "&sensor=false&key=#{GOOGLE_MAPS_API_KEY}"
     def self.venue(lat_long, venue_name, category=nil)
       uri = URI(URL)
       uri.query = "location=#{lat_long}&radius=500&" << URI.encode_www_form([["name", venue_name]]) 

@@ -25,9 +25,9 @@ describe NLProcessor do
         task.start.should be_nil
       end
       
-      xit "should have start date tomorrow" do
+      it "should have start date tomorrow" do
         task = NLProcessor::Task.new("start project tomorrow")
-        tomorrow = Time.parse("midnight")
+        tomorrow = Chronic.parse("midnight")
         task.start.should == tomorrow
       end
 
@@ -53,6 +53,11 @@ describe NLProcessor do
         task = NLProcessor::Task.new("buy milk at the supermarket")
         task.location.should be_nil
         task.category.should == "supermarket"
+      end
+
+      it "should have location = whole foods given from syntax" do
+        task = NLProcessor::Task.new("pick up break, milk and eggs from whole foods")
+        task.location.should == "whole foods"
       end
     end
   end
