@@ -24,7 +24,7 @@ describe NLProcessor do
         task = NLProcessor::Task.new("sleep")
         task.start.should be_nil
       end
-      
+
       it "should have start date tomorrow" do
         task = NLProcessor::Task.new("start project tomorrow")
         tomorrow = Chronic.parse("midnight")
@@ -38,26 +38,34 @@ describe NLProcessor do
       end
     end
 
-    describe "#location" do
+    describe "#set_subject_and_location" do
+      it "sets the subject regardless" do
+        task = NLProcessor::Task.new("eat dinner")
+        task.subject.should == "eat dinner"
+      end
+
       it "should not have location" do
         task = NLProcessor::Task.new("eat dinner")
         task.location.should be_nil
       end
 
-      it "should have location set" do
+      it "should have subject and location set" do
         task = NLProcessor::Task.new("eat dinner at subway")
         task.location.should_not be_nil
+        task.subject.should == "eat dinner"
       end
 
       it "should have category = supermarket" do
         task = NLProcessor::Task.new("buy milk at the supermarket")
         task.location.should be_nil
         task.category.should == "supermarket"
+        task.subject.should == "buy milk"
       end
 
       it "should have location = whole foods given from syntax" do
-        task = NLProcessor::Task.new("pick up break, milk and eggs from whole foods")
+        task = NLProcessor::Task.new("pick up bread, milk and eggs from whole foods")
         task.location.should == "whole foods"
+        task.subject.should == "pick up bread milk and eggs"
       end
     end
   end
