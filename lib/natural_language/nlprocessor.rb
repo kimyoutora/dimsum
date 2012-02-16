@@ -13,7 +13,7 @@ module NLProcessor
   end
 
   class Task
-    attr_reader :name, :start, :location, :category
+    attr_reader :name, :start, :location, :category, :subject
 
     def initialize(name)
       @original_name = name
@@ -27,11 +27,11 @@ module NLProcessor
         @name             = @processed_task.message
 
       set_metadata!
-      set_location!
     end
 
     def set_metadata!
       set_start_time!
+      set_subject_and_location!
     end
 
     def set_start_time!
@@ -45,9 +45,9 @@ module NLProcessor
       end
     end
 
-    def set_location!
+    def set_subject_and_location!
       sentence_parts = @name.split(/\sfrom\s|\sat\s/i)
-      puts sentence_parts.inspect
+      @subject = sentence_parts.first
       if sentence_parts.size > 1
         location = sentence_parts.last.gsub(/^\s*the\s+|^\sa\s+/i, "")
         if Categories.has_type?(location)
