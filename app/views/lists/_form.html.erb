@@ -12,12 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.label :original_text, "Start typing!" %><br />
+    <%= f.text_field :original_text, :size => 150 %>
   </div>
   <div class="actions">
     <%= f.submit %>
