@@ -55,5 +55,15 @@ module Dimsum
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # autoload files in lib
+    Dir["lib/**/*"].each do |f|
+      require "./" + f.gsub(/\.rb/, "") if File.file?(f)
+    end
+
+    # RSpec test framework
+    config.generators do |g|
+      g.test_framework :rspec
+    end
   end
 end
