@@ -12,3 +12,4 @@
  *= require foundation
  *= require_tree .
 */
+.hidden { display: none }

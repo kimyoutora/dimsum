@@ -13,9 +13,9 @@
 
   <div class="field">
     <%= f.label :original_text, "Start typing!" %><br />
-    <%= f.text_field :original_text, :size => 150 %>
+    <%= f.text_field :original_text, class: "large input-text" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions ui-hide-label">
+    <%= f.submit class: 'large white radius button' %>
   </div>
 <% end %>

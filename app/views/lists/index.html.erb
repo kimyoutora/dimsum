@@ -6,11 +6,13 @@
     <h1 class="six columns centered">Lists</h1>
   </div>
 
+  <div class="row hidden" id="new-task-form" data-role="none">
+    <%= render 'form' %>
+  </div>
+
   <% @lists.each do |list| %>
     <div class="list row large radius white button" data-list-id="<%= list.id %>">
-      <%# <div class="twelve columns large radius white button">%>
-        <%= link_to list.original_text, edit_list_path(list) %>
-      <%# </div>%>
+      <%= link_to list.original_text, edit_list_path(list) %>
     </div>
   <% end %>
 </div>

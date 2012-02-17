@@ -1,26 +1,21 @@
-<br/>
-<br/>
-You are in the vicinity of <%= @list_places.first.last.vicinity %>
-<br/>
-<br/>
+<div stlye="padding: 5px" class="container">
+  <h1><%= @list_places.first.last.vicinity %></h1>
 
-<% @list_places.each do |list_place|
-   list = list_place.first
-   place = list_place.last
-%>
-  <div class="list">
-    You are near <%= place.name %>. You had to <%= list.subject %>
-    <br/>
-    <audio controls = "controls">
-      <source src="<%= "/audio/#{list.id}.mp4"%>" type="audio/mp4"/>
-       This browser does not support HTML5 audio :-(
-    </audio>
-    <br/>
-    <%= link_to 'Show', @list %>
-    <%= link_to 'Edit', edit_list_path(@list) %>
-    <%= link_to 'Destroy', @list, confirm: 'Are you sure?', method: :delete %>
-  </div>
-<br />
-<% end %>
-
-<%= link_to 'New List', new_list_path %>
+  <% @list_places.each do |list_place|
+    list = list_place.first
+    place = list_place.last
+  %>
+    <div class="list row medium radius white button">
+      You had to <%= list.subject %> @ <%= place.name %>
+      <br/>
+      <!--
+      <audio controls = "controls">
+        <source src="<%= "/audio/#{list.id}.mp4"%>" type="audio/mp4"/>
+        This browser does not support HTML5 audio :-(
+      </audio>
+      <br/>
+      -->
+    </div>
+  <br />
+  <% end %>
+</div>
