@@ -5,7 +5,7 @@
     list = list_place.first
     place = list_place.last
   %>
-    <div class="list row medium radius white button">
+    <div class="list row medium radius white button" data-list-id="<%= list.id %>">
       You had to <%= list.subject %> @ <%= place.name %><br /><br />
       <audio controls = "controls">
         <source src="<%= "/audio/#{list.id}.mp4"%>" type="audio/mp4"/>
