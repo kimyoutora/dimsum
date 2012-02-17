@@ -2,6 +2,7 @@ REGEX = /(-)?\d+(\.\d{1,2})/
 Dimsum::Application.routes.draw do
   resources :items
 
+  match "lists/now" => "lists#now", :via => :get
   resources :lists
   match "lists/search/:lat/:long" => "lists#search", :via => :get, :constraints => {:lat => REGEX, :long => REGEX}
 

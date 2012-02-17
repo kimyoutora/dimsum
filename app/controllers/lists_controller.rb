@@ -1,4 +1,8 @@
 class ListsController < ApplicationController
+  #the line below is strictly for demo only
+  @@lat_long = [["37.76","-122.41"], ["37.73","-122.42"], ["37.75","-122.40"], ["37.75","-122.43"]]
+  @@counter = 0
+
   # GET /lists
   # GET /lists.json
   def index
@@ -7,6 +11,21 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lists }
+    end
+  end
+
+  #the demo-able action
+  def now
+    lat, long = @@lat_long[@@counter]
+    @list_places = List.by_lat_long(lat, long)
+    if @@counter == 3
+      @@counter = 0
+    else
+      @@counter += 1
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @list_places }
     end
   end
 
