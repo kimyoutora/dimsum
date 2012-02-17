@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
+//= jquery.mobile-1.0.1.min
 //= require_tree .

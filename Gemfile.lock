@@ -114,6 +114,9 @@ GEM
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    zurb-foundation (2.1.5.1)
+      jquery-rails (>= 1.0)
+      rails (~> 3.1)
 
 PLATFORMS
   ruby
@@ -128,3 +131,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  zurb-foundation
