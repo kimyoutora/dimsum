@@ -27,7 +27,7 @@ $(document).live( 'pageinit', function(event){
   });
 
   var showNewTaskForm = function() {
-    $("#new-task-form").show();
+    $("#new-task-form").slideDown();
   };
 
   var hideNewTaskForm = function() {

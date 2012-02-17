@@ -12,14 +12,14 @@ class List < ActiveRecord::Base
       unless place.nil?
         matches << [list, place]
         display_text = "You are near #{place.name}. You had to #{list.subject}"
-        # IO.popen("say -v #{VOICES.sample} -o #{Rails.public_path}/audio/#{list.id}.mp4 #{display_text}")
+        IO.popen("say -v #{VOICES.sample} -o #{Rails.public_path}/audio/#{list.id}.mp4 #{display_text}")
       end
     end
     unless matches.empty?
       last_list = matches.last.first
       last_place = matches.last.last
       display_text = "You are near #{last_place.name}. You had to #{last_list.subject}"
-      # IO.popen("say -v Hysterical -o #{Rails.public_path}/audio/#{last_list.id}.mp4 #{display_text}")
+      IO.popen("say -v Hysterical -o #{Rails.public_path}/audio/#{last_list.id}.mp4 #{display_text}")
     end
     sleep 1
     return matches
